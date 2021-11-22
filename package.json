@@ -1,0 +1,29 @@
+{
+  "name": "@salla.sa/webhooks-actions",
+  "version": "1.0.0",
+  "description": "Salla webhooks actions",
+  "author": "Salla App (https://github.com/SallaApp)",
+  "keywords": [
+    "node",
+    "salla"
+  ],
+  "main": "src/Actions.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^8.2.1",
+    "should": "^13.2.3",
+    "sinon": "^7.4.2"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SallaApp/webhooks-actions.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SallaApp/webhooks-actions/issues"
+  },
+  "homepage": "https://github.com/SallaApp/webhooks-actions#readme"
+}

@@ -1,0 +1,29 @@
+<h2>Welcome to your Salla Webhooks App</h2>
+
+Lisning for Salla Actions events ...
+<div id="events"></div>
+<script>
+  setInterval(() => {
+    fetch("/events")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        const events = document.getElementById("events");
+        if (data.length > 0) {
+          data.forEach((event) => {
+            const li = document.createElement("li");
+            li.innerHTML = `${event.event} `;
+            li.style.fontWeight = "bold";
+            const div = document.createElement("div");
+            div.innerHTML = `${JSON.stringify(event.data)}`;
+            events.appendChild(li);
+            events.appendChild(div);
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, 2000);
+</script>
