@@ -6,38 +6,35 @@ describe("Test Salla Actions", function () {
     it("Should error if no callback or no action passed!", function (done) {
       const Actions = require("../src/Actions");
       try {
-        Actions.addListener(null, () => {});
-        Actions.addListener("app.installed");
+        Actions.on(null, () => {});
+        Actions.on("app.installed");
       } catch (err) {
         should.exist(err);
       }
       done();
     });
   };
-  it("Should be able to add listeners ", function () {
+  it("Should be able to add multi listeners ", function () {
     const Actions = require("../src/Actions");
     Actions.setSecret("secret");
-    Actions.addListener("app.installed", () => {});
+    Actions.on("app.installed", () => {});
 
-    should.equal(
-      typeof Actions._actions_callbacks["app.installed"],
-      "function"
-    );
+    should.equal(Actions._actions_callbacks["app.installed"].length, 1);
   });
   it("Should be able to remove listeners ", function () {
     const Actions = require("../src/Actions");
     Actions.setSecret("secret");
-    Actions.addListener("app.stroe.authorize", () => {});
-    Actions.removeListener("app.stroe.authorize");
+    Actions.on("app.stroe.authorize", () => {});
+    Actions.removeLastListener("app.stroe.authorize");
     should.notEqual(
-      typeof Actions._actions_callbacks["app.stroe.authorize"],
-      "function"
+      Actions._actions_callbacks["app.stroe.authorize"].length,
+      1
     );
   });
   it("Should throw error if no seceret is set ", function () {
     const Actions = require("../src/Actions");
     try {
-      Actions.addListener("app.stroe.authorize", () => {});
+      Actions.on("app.stroe.authorize", () => {});
     } catch (err) {
       should.exist(err);
     }
@@ -45,7 +42,7 @@ describe("Test Salla Actions", function () {
   it("Should be able to Fire Callbacks when Events happen ", function () {
     const Actions = require("../src/Actions");
     Actions.setSecret("secret");
-    Actions.addListener("app.installed", (event, userArgs) => {
+    Actions.on("app.installed", (event, userArgs) => {
       should.equal(event, "app.installed");
       should.equal(event.secret, "secret");
     });

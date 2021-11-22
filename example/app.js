@@ -3,8 +3,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const consolidate = require("consolidate");
 
-// Salla Actions API
-const SallaActions = require("../src/Actions");
+// Salla Webhook API
+const SallaWebhook = require("../src/Actions");
 
 // initialize app
 const port = 8081;
@@ -30,19 +30,20 @@ require("dotenv").config();
   ...
 */
 const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
-SallaActions.setSecret(WEBHOOK_SECRET);
+SallaWebhook.setSecret(WEBHOOK_SECRET);
 
 // add webhook listener
-SallaActions.addListener("app.installed", (eventBody, userArgs) => {
+SallaWebhook.on("app.installed", (eventBody, userArgs) => {
   eventsStack.push(eventBody);
 });
 
-// POST /webhooks/notifiy
-app.post("/webhooks/notifiy", function (req, res) {
-  SallaActions.checkActions(req.body, req.headers.authorization, {
+// POST /webhook
+app.post("/webhook", function (req, res) {
+  SallaWebhook.checkActions(req.body, req.headers.authorization, {
     /* your args to pass to action files or listeners */
   });
 });
+
 app.get("/", function (req, res) {
   res.render("index.html", {});
 });
@@ -50,6 +51,7 @@ app.get("/events", function (req, res) {
   res.send(eventsStack);
   eventsStack = [];
 });
+
 app.listen(port, function () {
   console.log("App is listening on port " + port);
 });

@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require("path");
 
 /**
  * `Actions` constructor.
@@ -10,14 +10,14 @@ const path = require('path');
  *
  * Examples:
  *
- *  Actions.addListener(
+ *  Actions.on(
  *    "app.installed",
  *    (event, userArgs) => {
  *      // handel app.installed event
  *    }
  *  );
  *
- *  Actions.addListener("all", (event, userArgs) => {
+ *  Actions.on("all", (event, userArgs) => {
  *    // handel all events even thats not authorized
  *  });
  *
@@ -28,66 +28,70 @@ const path = require('path');
  *
  */
 class Actions {
-    _secret = '';
+  _secret = "";
+  setSecret(secret) {
+    this._secret = secret;
+  }
+  _actions_callbacks = {};
+  on(event, cb) {
+    if (this._secret === "")
+      throw new Error(
+        "Your Must Set secret before adding listenres ..  check .env file"
+      );
 
-    setSecret(secret) {
-        this._secret = secret;
+    if (event == null || cb == null) throw new Error("event or cb is null");
+
+    if (!this._actions_callbacks[event]) this._actions_callbacks[event] = [cb];
+    else this._actions_callbacks[event].push(cb);
+  }
+  removeLastListener(event) {
+    if (event == null) throw new Error("Event is null");
+    if (this._actions_callbacks[event] && this._actions_callbacks[event].length)
+      this._actions_callbacks[event].pop();
+    else delete this._actions_callbacks[event];
+  }
+  getEventPath(str) {
+    try {
+      str = str.split(".");
+      let folder = str.shift();
+      return [folder, "/", str.map((e) => e + ".").join("") + "js"].join("");
+    } catch (err) {
+      console.log(err);
+      return "";
+    }
+  }
+  checkActions(eventBody, secret, userArgs) {
+    // capture all events even if not authorized
+    if (eventBody && this._actions_callbacks["all"])
+      this._actions_callbacks["all"].map((cb) => cb(eventBody, userArgs));
+
+    if (!eventBody || this._secret === "" || secret !== this._secret) {
+      return;
     }
 
-    _actions_callbacks = {};
+    // first we fire the callback from listeners set by user
+    if (this._actions_callbacks[eventBody.event])
+      this._actions_callbacks[eventBody.event].map((cb) =>
+        cb(eventBody, userArgs)
+      );
 
-    addListener(event, cb) {
-        if (this._secret === '')
-            throw new Error(
-                'Your Must Set secret before adding listenres ..  check .env file'
-            );
+    // second we fire the callback from folder actions
+    // search in Actions Folder
+    try {
+      let actionsPath = path.resolve(
+        `./Actions/${this.getEventPath(eventBody.event)}`
+      );
+      // check for securty and if the file is a function
+      actionsPath = actionsPath.replace("eval", "");
 
-        if (event == null || cb == null) throw new Error('event or cb is null');
-        this._actions_callbacks[event] = cb;
+      require(actionsPath)(eventBody, userArgs);
+    } catch (e) {
+      console.log(
+        "Cant Fire callback from Actions Folder .. Event Path Not Found",
+        `./Actions/${this.getEventPath(eventBody.event)}`
+      );
     }
-
-    removeListener(event) {
-        if (event == null) throw new Error('event is null');
-        delete this._actions_callbacks[event];
-    }
-
-    checkActions(eventBody, secret, userArgs) {
-        if (!eventBody || this._secret !== '' || secret !== this._secret) {
-            ///
-        }
-
-        // first we fire the callback from listeners set by user
-        if (this._actions_callbacks[eventBody.event])
-            this._actions_callbacks[eventBody.event](eventBody, userArgs);
-
-
-        // second we fire the callback from folder actions
-        // search in Actions Folder
-        try {
-            require(path.resolve(
-                `./Actions${
-                    eventBody.event
-                        .split('.')
-                        .map((e) => '/' + e)
-                        .join('') + '.js'
-                }`
-            ))(eventBody, userArgs);
-        } catch (e) {
-            console.log(
-                'Cant Fire callback from Actions Folder .. Event Path Not Found',
-                `./Actions${
-                    eventBody.event
-                        .split('.')
-                        .map((e) => '/' + e)
-                        .join('') + '.js'
-                }`
-            );
-        }
-
-        // capture all events even if not authorized
-        if (eventBody && this._actions_callbacks['all'])
-            this._actions_callbacks['all'](eventBody, userArgs);
-    }
+  }
 }
 
 module.exports = new Actions();

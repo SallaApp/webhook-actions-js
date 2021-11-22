@@ -1,10 +1,10 @@
 /**
- *  this function is exeucted on "customer.updated" action triggered by Salla .
+ *  this function is exeucted on "app.store.authorize" action triggered by Salla .
  *
  * Action Body received from Salla
  * @param {Object} eventBody
  * { 
- *  event: 'customer.updated',
+ *  event: 'app.store.authorize',
     merchant: 472944967,
     created_at: '2021-11-22 13:51:57',
     data:
@@ -30,5 +30,6 @@
  */
 module.exports = (eventBody, userArgs) => {
   // your logic here
+
   return null;
 };

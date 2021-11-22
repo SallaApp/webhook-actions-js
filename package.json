@@ -1,7 +1,7 @@
 {
   "name": "@salla.sa/webhooks-actions",
   "version": "1.0.0",
-  "description": "Salla webhooks actions",
+  "description": "Salla Webhooks Actions",
   "author": "Salla App (https://github.com/SallaApp)",
   "keywords": [
     "node",

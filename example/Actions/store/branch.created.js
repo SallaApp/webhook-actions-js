@@ -1,10 +1,10 @@
 /**
- *  this function is exeucted on "customer.updated" action triggered by Salla .
+ *  this function is exeucted on "store.branch.created" action triggered by Salla .
  *
  * Action Body received from Salla
  * @param {Object} eventBody
  * { 
- *  event: 'customer.updated',
+ *  event: 'store.branch.created',
     merchant: 472944967,
     created_at: '2021-11-22 13:51:57',
     data:

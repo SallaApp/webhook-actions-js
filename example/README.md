@@ -1,9 +1,9 @@
-# Login Example
+# Salla Webhook Example
 
 If you want to run the project
 
 1. Create a Salla app on [Salla Partner Portal](https://salla.partners/login).
-1. Add `https://YOUR_SERVER_URL/webhooks/notifiy` as a webhook URL .
+1. Add `https://YOUR_SERVER_URL/webhook` as a webhook URL .
 1. Rename the file `.env.exmaple` to `.env` and filling with the following:
 
    ```sh
