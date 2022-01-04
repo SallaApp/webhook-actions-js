@@ -10,7 +10,7 @@
     <br />
     <a href="https://salla.dev/"><strong>Explore our blogs »</strong></a>
     <br />
-    <br /><a href="https://github.com/SallaApp/webhooks-actions/issues/new">Report Bug</a> · <a href="https://github.com/SallaApp/webhooks-actions/discussions/new">Request Feature</a>
+<br /><a href="https://github.com/SallaApp/webhooks-actions/issues/new">Report Bug</a> · <a href="https://github.com/SallaApp/webhooks-actions/discussions/new">Request Feature</a> · <a href="https://t.me/salladev">&lt;/Salla Developers&gt;</a>
   </p>
 </div>
 
