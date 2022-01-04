@@ -42,7 +42,7 @@ With Salla Webhooks Actions you can listen for notifications send by Salla to yo
 
 ### Impelement Using Listeners
 
-You you can add listeners , the function passed will be exeucted every time an event is received .
+You you can add listeners as a function, it will be exeucted every time an event is received .
 
 ```javascript
 // Import Deps
@@ -96,8 +96,7 @@ app.listen(port, function () {
 ```
 
 ### Impelement Using Folder Structure
-
-You you can add actions as folders and files ,by creating a folder named Actions on the top level of your project .. the js file will be exeucted when an event is received .
+You you can add listeners as files easly using ```ex: salla app create-webhook app.updated ``` or create a listener function, it will be exeucted every time an event is received .
 
 ```javascript
 /* 
