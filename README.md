@@ -36,8 +36,6 @@ For more information about Salla's Webhooks implementation, check our
 
 ## Usage
 
-## Impelement
-
 With Salla Webhooks Actions you can listen for notifications send by Salla to your endpoint set by Expressjs or other frameworks like next.js
 
 ### Impelement Using Listeners
@@ -257,6 +255,10 @@ Salla already defined a list of the webhooks/actions that are triggered automati
     $ npm test
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+## Support
+
+The team is always here to help you. Happen to face an issue? Want to report a bug? You can submit one here on Github using the [Issue Tracker](https://github.com/SallaApp/Salla-CLI/issues/new). If you still have any questions, please contact us via the [Telegram Bot](https://t.me/SallaSupportBot) or join in the Global Developer Community on [Telegram](https://t.me/salladev).
 
 ## Contributing
 
