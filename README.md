@@ -249,6 +249,10 @@ Salla already defined a list of the webhooks/actions that are triggered automati
 
 <!-- COMMANDS -->
 
+<!-- ## Examples
+
+TBD -->
+
 ## Tests
 
     $ npm install --dev
