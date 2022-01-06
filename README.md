@@ -94,7 +94,7 @@ app.listen(port, function () {
 ```
 
 ### Impelement Using Folder Structure
-You you can add listeners as files easly using ```ex: salla app create-webhook app.updated ```, the file will be exeucted every time an event is received .
+You you can add listeners as files easly using ```salla app create-webhook app.updated ```, the file will be exeucted every time an event is received .
 
 ```javascript
 /* 
