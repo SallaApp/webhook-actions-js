@@ -19,10 +19,10 @@
 Webhooks simplify the communication between your App and Salla APIs. In this way, you will be notified whenever your app receives payload/data from the Salla APIs. These webhooks are triggered along with many actions such as an order or product being created, a customer logs in, a coupon is applied, and much more.
 
 This module helps you to listen for notifications from Salla APIs within your Nodejs applications and Expressjs,
-By using it you can impelement listernes for every event sent by Salla to your server .
+By using it you can implement listernes for every event sent by Salla to your server.
 
 For more information about Salla's Webhooks implementation, check our
-[Webhooks Explained](https://salla.dev/blog/webhooks-101/).
+[Webhooks Explained](https://docs.salla.dev/doc-421119).
 
 ## Webhooks Workflow
 
@@ -36,11 +36,11 @@ For more information about Salla's Webhooks implementation, check our
 
 ## Usage
 
-With Salla Webhooks Actions you can listen for notifications send by Salla to your endpoint set by Expressjs or other frameworks like next.js
+With Salla Webhooks Actions you can listen for notifications sent by Salla to your endpoint set by Expressjs or other frameworks like next.js
 
 ### Impelement Using Listeners
 
-You you can add listeners as a function, it will be exeucted every time an event is received .
+You you can add listeners as a function, it will be executed every time an event is received.
 
 ```javascript
 // Import Deps
@@ -60,7 +60,7 @@ app.use(bodyParser.json());
 require("dotenv").config();
 
 /*
-  A .env file should be automatically created in the root directory of your project when createing your project with @salla/SallaCLI.
+  A .env file should be automatically created in the root directory of your project when creating your project with @salla/SallaCLI.
   environment-specific variables on new lines in the form of NAME=VALUE. For example:
   SALLA_OAUTH_CLIENT_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   SALLA_OAUTH_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -174,7 +174,7 @@ Salla already defined a list of the webhooks/actions that are triggered automati
 
 #### Order Related Webhooks/Actions
 
-| ** Action Name **                                                               | ** Description **                                                            |
+| **Action Name**                                                               | **Description**                                                            |
 | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | [order.created](app/Actions/Order/Created.js)                                   | This indicates a singular order has been created                             |
 | [order.updated](app/Actions/Order/Updated.js)                                   | Details, data and/or content of a specific order have been refreshed updated |
@@ -198,7 +198,7 @@ Salla already defined a list of the webhooks/actions that are triggered automati
 
 #### Product Related Webhooks/Actions
 
-| ** Action Name **                                          | ** Description **                                                                    |
+| **Action Name**                                          | **Description**                                                                    |
 | ---------------------------------------------------------- | ------------------------------------------------------------------------------------ |
 | [product.created](app/Actions/Product/Created.js)          | A new product is created. Payload of the new product are to accompanying the product |
 | [product.updated](app/Actions/Product/Updated.js)          | Add/Modify details of a product                                                      |
@@ -210,7 +210,7 @@ Salla already defined a list of the webhooks/actions that are triggered automati
 
 #### Shipping Companies Related Webhooks/Actions
 
-| ** Action Name **        | ** Description **                                                                     |
+| **Action Name**        | **Description**                                                                     |
 | ------------------------ | ------------------------------------------------------------------------------------- |
 | shipping.zone.created    | This is triggered when a shipping zone has been created for a custom shipping company |
 | shipping.zone.updated    | This is triggered when a shipping zone has been updated for a custom shipping company |
@@ -222,7 +222,7 @@ Salla already defined a list of the webhooks/actions that are triggered automati
 
 #### Customer Related Webhooks/Actions
 
-| ** Action Name **                                          | ** Description **                        |
+| **Action Name**                                          | **Description**                        |
 | ---------------------------------------------------------- | ---------------------------------------- |
 | [customer.created](app/Actions/Customer/Created.js)        | Create a new customer record             |
 | [customer.updated](app/Actions/Customer/Updated.js)        | Update details for a customer            |
@@ -233,7 +233,7 @@ Salla already defined a list of the webhooks/actions that are triggered automati
 
 #### Category Related Webhooks/Actions
 
-| ** Action Name **                                   | ** Description **                                   |
+| **Action Name**                                   | **Description**                                   |
 | --------------------------------------------------- | --------------------------------------------------- |
 | [category.created](app/Actions/Category/Created.js) | Creates a new category for products to be put under |
 | [category.updated](app/Actions/Category/Updated.js) | Add new or reform existing category details         |
@@ -242,7 +242,7 @@ Salla already defined a list of the webhooks/actions that are triggered automati
 
 #### Brand Related Webhooks/Actions
 
-| ** Action Name **                             | ** Description **                                                                    |
+| **Action Name**                             | **Description**                                                                    |
 | --------------------------------------------- | ------------------------------------------------------------------------------------ |
 | [brand.created](app/Actions/Brand/Created.js) | Creates a new Brand.                                                                 |
 | [brand.updated](app/Actions/Brand/Updated.js) | Triggered when Information about a sepcific Brand is updated/refurbished/streamlined |
@@ -252,7 +252,7 @@ Salla already defined a list of the webhooks/actions that are triggered automati
 
 #### Store Related Webhooks/Actions
 
-| ** Action Name **                                                | ** Description **                  |
+| **Action Name**                                                | **Description**                  |
 | ---------------------------------------------------------------- | ---------------------------------- |
 | [store.branch.created](app/Actions/Store/BranchCreated.js)       | Creates a new store.               |
 | [store.branch.updated](app/Actions/Store/BranchUpdated.js)       | Updates an existing branch         |
@@ -265,7 +265,7 @@ Salla already defined a list of the webhooks/actions that are triggered automati
 
 #### Cart Related Webhooks/Actions
 
-| ** Action Name **                                            | ** Description **                               |
+| **Action Name**                                            | **Description**                               |
 | ------------------------------------------------------------ | ----------------------------------------------- |
 | [abandoned.cart](app/Actions/Miscellaneous/AbandonedCart.js) | Outputs a list of abandoned carts               |
 | [coupon.applied](app/Actions/Miscellaneous/CouponApplied.js) | Creates a discount code in the form of a coupon |
@@ -274,7 +274,7 @@ Salla already defined a list of the webhooks/actions that are triggered automati
 
 #### Special Offer Related Webhooks/Actions
 
-| ** Action Name **                                                        | ** Description **           |
+| **Action Name**                                                        | **Description**           |
 | ------------------------------------------------------------------------ | --------------------------- |
 | [specialoffer.created](app/Actions/Miscellaneous/SpecialofferCreated.js) | Creates a new special offer |
 | [specialoffer.updated](app/Actions/Miscellaneous/SpecialofferUpdated.js) | Updates a special offer     |
@@ -283,7 +283,7 @@ Salla already defined a list of the webhooks/actions that are triggered automati
 
 #### Miscellaneous Related Webhooks/Actions
 
-| ** Action Name **                                        | ** Description **               |
+| **Action Name**                                        | **Description**               |
 | -------------------------------------------------------- | ------------------------------- |
 | [review.added](app/Actions/Miscellaneous/ReviewAdded.js) | A product review has been added |
 
