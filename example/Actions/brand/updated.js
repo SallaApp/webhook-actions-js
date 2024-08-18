@@ -1,11 +1,11 @@
 /**
- * This function is executed on the "brand.created" action triggered by Salla.
+ * This function is executed on the "brand.updated" action triggered by Salla.
  *
  * Action Body received from Salla:
  * @param {Object} eventBody
  * 
  * {
- *   "event": "brand.created",
+ *   "event": "brand.updated",
  *   "merchant": 596493488,
  *   "created_at": "Sun Mar 24 2024 16:09:48 GMT+0300",
  *   "data": {

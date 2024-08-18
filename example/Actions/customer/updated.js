@@ -5,22 +5,37 @@
  * @param {Object} eventBody
  * { 
  *  event: 'customer.updated',
-    merchant: 472944967,
-    created_at: '2021-11-22 13:51:57',
-    data:
+ *  merchant: 1305146709,
+ *  created_at: 'Tue Jan 25 2022 12:36:49 GMT+0300',
+ *  data:
  *    {
- *      "id":1911645512,
- *      "app_name":"app name",
- *      "app_description":"desc",
- *      "app_type":"app",
- *      "app_scopes":[ 
- *        'settings.read',
- *        'customers.read_write',
- *        'orders.read_write',
- *        'carts.read',
- *        ...
- *      ],
- *      "installation_date":"2021-11-21 11:07:13"
+ *      "id": 225167971,
+ *      "first_name": "User",
+ *      "last_name": "Mohammed",
+ *      "mobile": 555555555,
+ *      "mobile_code": "+966",
+ *      "email": "test@gmail.com",
+ *      "urls": {
+ *        "customer": "https://salla.sa/dev-wofftr4xsra5xtlv/profile",
+ *        "admin": "https://s.salla.sa/customers/l7mYBdgXA9xJwWZRZK8WD42GNkZbjvRO"
+ *      },
+ *      "avatar": "https://i.ibb.co/jyqRQfQ/avatar-male.webp",
+ *      "gender": "female",
+ *      "birthday": {
+ *        "date": "1997-06-03 00:00:00.000000",
+ *        "timezone_type": 3,
+ *        "timezone": "Asia/Riyadh"
+ *      },
+ *      "city": "الرياض",
+ *      "country": "السعودية",
+ *      "country_code": "SA",
+ *      "currency": "AED",
+ *      "location": "14",
+ *      "updated_at": {
+ *        "date": "2022-01-24 14:26:55.000000",
+ *        "timezone_type": 3,
+ *        "timezone": "Asia/Riyadh"
+ *      }
  *    }
  * }
  * Arguments passed by you:
