@@ -18,8 +18,8 @@
 
 Webhooks simplify the communication between your App and Salla APIs. In this way, you will be notified whenever your app receives payload/data from the Salla APIs. These webhooks are triggered along with many actions such as an order or product being created, a customer logs in, a coupon is applied, and much more.
 
-This module helps you to listen for notifications from Salla APIs within your Nodejs applications and Expressjs,
-By using it you can implement listernes for every event sent by Salla to your server.
+This module helps you to listen for notifications from Salla APIs within your Nodejs applications and Express.js,
+By using it you can implement listeners for every event sent by Salla to your server.
 
 For more information about Salla's Webhooks implementation, check our
 [Webhooks Explained](https://docs.salla.dev/doc-421119).
@@ -36,9 +36,9 @@ For more information about Salla's Webhooks implementation, check our
 
 ## Usage
 
-With Salla Webhooks Actions you can listen for notifications sent by Salla to your endpoint set by Expressjs or other frameworks like next.js
+With Salla Webhooks Actions you can listen for notifications sent by Salla to your endpoint set by Express.js or other frameworks like next.js
 
-### Impelement Using Listeners
+### Implement Using Listeners
 
 You you can add listeners as a function, it will be executed every time an event is received.
 
@@ -79,7 +79,7 @@ SallaWebhook.on("app.installed", (eventBody, userArgs) => {
   // handel app.installed event
 });
 SallaWebhook.on("app.stroe.authorize", (eventBody, userArgs) => {
-  // handel app.app.stroe.authoriz event
+  // handel app.app.stroe.authorize event
 });
 
 // POST /webhook
@@ -93,9 +93,9 @@ app.listen(port, function () {
 });
 ```
 
-### Impelement Using Folder Structure
+### Implement Using Folder Structure
 
-You you can add listeners as files easly using the `salla app create-webhook app.updated ` command; the file will be exeucted every time an event is received .
+You you can add listeners as files easily using the `salla app create-webhook app.updated ` command; the file will be executed every time an event is received .
 
 ```javascript
 /* 
@@ -135,7 +135,7 @@ app.use(bodyParser.json());
 require("dotenv").config();
 
 /*
-  A .env file should be automatically created in the root directory of your project when createing your project with @salla/SallaCLI.
+  A .env file should be automatically created in the root directory of your project when creating your project with @salla/SallaCLI.
   environment-specific variables on new lines in the form of NAME=VALUE. For example:
   SALLA_OAUTH_CLIENT_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   SALLA_OAUTH_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -158,7 +158,7 @@ app.post("/webhooks", (req, res) =>
     req.body,
     req.headers.authorization,
     ...{
-      /* add more arguments, will be passed to listner functions and SallaWebhook js files*/
+      /* add more arguments, will be passed to listener functions and SallaWebhook js files*/
     }
   )
 );
@@ -245,7 +245,7 @@ Salla already defined a list of the webhooks/actions that are triggered automati
 | **Action Name**                             | **Description**                                                                    |
 | --------------------------------------------- | ------------------------------------------------------------------------------------ |
 | [brand.created](app/Actions/Brand/Created.js) | Creates a new Brand.                                                                 |
-| [brand.updated](app/Actions/Brand/Updated.js) | Triggered when Information about a sepcific Brand is updated/refurbished/streamlined |
+| [brand.updated](app/Actions/Brand/Updated.js) | Triggered when Information about a specific Brand is updated/refurbished/streamlined |
 | [brand.deleted](app/Actions/Brand/Deleted.js) | An existing brand is then deleted and removed from a store                           |
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -259,7 +259,7 @@ Salla already defined a list of the webhooks/actions that are triggered automati
 | [store.branch.setDefault](app/Actions/Store/BranchSetDefault.js) | Sets for default a specific branch |
 | [store.branch.activated](app/Actions/Store/BranchActivated.js)   | Activates a disabled branch        |
 | [store.branch.deleted](app/Actions/Store/BranchDeleted.js)       | Deletes a branch                   |
-| [storetax.created](app/Actions/Store/TaxCreated.js)              | Creats a new Store Tax             |
+| [storetax.created](app/Actions/Store/TaxCreated.js)              | Creates a new Store Tax             |
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
