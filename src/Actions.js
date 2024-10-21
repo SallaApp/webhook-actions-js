@@ -21,7 +21,7 @@ const path = require("path");
  *    // handel all events even thats not authorized
  *  });
  *
- *  // set the url to caputre the webhooks
+ *  // set the url to capture the webhooks
  *  app.post("/webhooks/notify", (req, res) =>
  *    Actions.checkActions(req.body, req.body.event, req.headers.authorization)
  *  );
@@ -36,7 +36,7 @@ class Actions {
   on(event, cb) {
     if (this._secret === "")
       throw new Error(
-        "Your Must Set secret before adding listenres ..  check .env file"
+        "Your Must Set secret before adding listeners ..  check .env file"
       );
 
     if (event == null || cb == null) throw new Error("event or cb is null");
@@ -81,7 +81,7 @@ class Actions {
       let actionsPath = path.resolve(
         `./Actions/${this.getEventPath(eventBody.event)}`
       );
-      // check for securty and if the file is a function
+      // check for security and if the file is a function
       actionsPath = actionsPath.replace("eval", "");
 
       require(actionsPath)(eventBody, userArgs);

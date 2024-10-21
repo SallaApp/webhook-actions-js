@@ -31,7 +31,7 @@ describe("Test Salla Actions", function () {
       1
     );
   });
-  it("Should throw error if no seceret is set ", function () {
+  it("Should throw error if no secret is set ", function () {
     const Actions = require("../src/Actions");
     try {
       Actions.on("app.stroe.authorize", () => {});
