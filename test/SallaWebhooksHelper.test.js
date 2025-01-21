@@ -24,17 +24,17 @@ describe("Test Salla Actions", function () {
   it("Should be able to remove listeners ", function () {
     const Actions = require("../src/Actions");
     Actions.setSecret("secret");
-    Actions.on("app.stroe.authorize", () => {});
-    Actions.removeLastListener("app.stroe.authorize");
+    Actions.on("app.store.authorize", () => {});
+    Actions.removeLastListener("app.store.authorize");
     should.notEqual(
-      Actions._actions_callbacks["app.stroe.authorize"].length,
+      Actions._actions_callbacks["app.store.authorize"].length,
       1
     );
   });
   it("Should throw error if no secret is set ", function () {
     const Actions = require("../src/Actions");
     try {
-      Actions.on("app.stroe.authorize", () => {});
+      Actions.on("app.store.authorize", () => {});
     } catch (err) {
       should.exist(err);
     }
