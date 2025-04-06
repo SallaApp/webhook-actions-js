@@ -24,17 +24,21 @@ describe("Test Salla Actions", function () {
   it("Should be able to remove listeners ", function () {
     const Actions = require("../src/Actions");
     Actions.setSecret("secret");
-    Actions.on("app.stroe.authorize", () => {});
-    Actions.removeLastListener("app.stroe.authorize");
+    Actions.on("app.store.authorize", () => {});
+    should.equal(
+      Actions._actions_callbacks["app.store.authorize"].length,
+      1
+    );
+    Actions.removeLastListener("app.store.authorize");
     should.notEqual(
-      Actions._actions_callbacks["app.stroe.authorize"].length,
+      Actions._actions_callbacks["app.store.authorize"].length,
       1
     );
   });
   it("Should throw error if no secret is set ", function () {
     const Actions = require("../src/Actions");
     try {
-      Actions.on("app.stroe.authorize", () => {});
+      Actions.on("app.store.authorize", () => {});
     } catch (err) {
       should.exist(err);
     }
@@ -49,4 +53,15 @@ describe("Test Salla Actions", function () {
     Actions.checkActions({ event: "app.installed" });
   });
   it_should_handle_errors();
+
+  it("Should be able to track error when secret not set ", function () {
+    const Actions = require("../src/Actions");
+    Actions.setSecret();
+    try {
+      Actions.on("app.store.authorize", () => {});
+    } catch (error) {
+      should.equal(error.message,"Your Must Set secret before adding listeners ..  check .env file")
+    }
+  });
+
 });
