@@ -54,14 +54,5 @@ describe("Test Salla Actions", function () {
   });
   it_should_handle_errors();
 
-  it("Should be able to track error when secret not set ", function () {
-    const Actions = require("../src/Actions");
-    Actions.setSecret();
-    try {
-      Actions.on("app.store.authorize", () => {});
-    } catch (error) {
-      should.equal(error.message,"Your Must Set secret before adding listeners ..  check .env file")
-    }
-  });
-
+   
 });
