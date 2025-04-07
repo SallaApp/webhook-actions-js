@@ -34,7 +34,7 @@ class Actions {
   }
   _actions_callbacks = {};
   on(event, cb) {
-    if (this._secret === "")
+    if (!this._secret)
       throw new Error(
         "Your Must Set secret before adding listeners ..  check .env file"
       );
